@@ -69,7 +69,53 @@
 	</header>
 	<div class="container">
 		<section id="main_content">
-			<audio src="music/匆匆那年 - 王菲.mp3" autoplay="autoplay" loop="loop"></audio>
+			<!--audio src="music/匆匆那年 - 王菲.mp3" autoplay="autoplay" loop="loop"></audio-->
+			<script type="text/javascript">
+				var audio = document.createElement("audio");
+				/* 音乐顺序播放方法
+				if (audio != null && audio.canPlayType && audio.canPlayType("audio/mpeg"))
+				{
+					audio.src = "music/匆匆那年 - 王菲.mp3";
+					audio.addEventListener('ended', function () {
+						// Wait 500 milliseconds before next loop
+						setTimeout(function () {
+							audio.src = "music/天堂 - 唐朝乐队.mp3";
+							audio.play(); 
+						}, 500);
+					}, false);
+					audio.play();
+				}
+				*/
+				
+				function choose_music() {
+					var id = Math.floor(Math.random()*6);
+					var music_arr = new Array(2);
+					music_arr[0] = "music/匆匆那年 - 王菲.mp3";
+					music_arr[1] = "music/天堂 - 唐朝乐队.mp3";
+					music_arr[2] = "music/寂寞寂寞就好 - 田馥甄.mp3";
+					music_arr[3] = "music/魔鬼中的天使 - 田馥甄.mp3";
+					music_arr[4] = "music/信仰之名 - TFBOYS.mp3";
+					music_arr[5] = "music/雨樱花 - 飞儿乐团.mp3";
+					// music_arr[] = "music/";
+					return music_arr[id];
+				}
+				
+				function play_music() {
+					if (audio != null && audio.canPlayType && audio.canPlayType("audio/mpeg"))
+					{
+						
+						audio.src = choose_music();
+						audio.addEventListener('ended', function () {
+							// Wait 500 milliseconds before next loop
+							setTimeout(play_music(), 500);
+						}, false);
+						audio.play();
+					}
+				}
+				
+				play_music();
+				
+			</script>
 			<h3>The article classification</h3>
 			<a href="java/index.html" class="btn btn-github" target="_blank">java</a>
 			<a href="c++/index.html" class="btn btn-github" target="_blank">c++</a>
@@ -80,7 +126,7 @@
 			<a href="ac/index.html" class="btn btn-github" target="_blank">algorithm competition</a>
 			<hr />
 			<h3>Introduction to myself</h3>
-<p>welcome to my blog:)<br />anything please connect <a href="mailto:utudutu@gmail.com">utudutu@gmail.com</a></p>
+<p>welcome to my blog:)<br />anything please connect <a href="mailto:utudutu@gmail.com">utudutu@gmail.com</a><br />or follow me in <a href="http://weibo.com/utudutu" target="_blank">my weibo</a></p>
 		</section>
 	</div>
 </body>
